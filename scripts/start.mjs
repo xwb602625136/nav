@@ -114,8 +114,8 @@ try {
     id: -2,
     workTitle: '距离下班还有',
     restTitle: '休息啦！',
-    startDate: new Date(2024, 12, 25, 8, 30, 0).getTime(),
-    date: new Date(2024, 12, 25, 18, 0, 0).getTime(),
+    startDate: startOfDay.getTime(),
+    date: endOfDay.getTime(),
   }
   if (idx >= 0) {
     components[idx] = {
@@ -157,15 +157,27 @@ try {
     date: '2025-01-29',
   }
 
+   const countdown2 = {
+    type: 5,
+    id: -5,
+    topColor: 'linear-gradient(90deg, #FAD961 0%, #F76B1C 100%)',
+    bgColor: 'rgb(235,129,124)',
+    url: 'https://gcore.jsdelivr.net/gh/xjh22222228/public@gh-pages/nav/component2.jpg',
+    title: '距离休假过年还有',
+    dateColor: '#fff',
+    dayColor: '#fff',
+    date: '2025-01-18',
+  }
+
   if (idx >= 0) {
     components[idx] = {
-      ...countdown,
       ...countdown,
       ...components[idx],
     }
     components[idx].url = replaceJsdelivrCDN(components[idx].url, settings)
   } else {
-    components.push(countdown)
+    components.push(countdown);
+    components.push(countdown2);
   }
   //
   idx = components.findIndex((item) => item.type === 3)
