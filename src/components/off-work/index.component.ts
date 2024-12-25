@@ -52,7 +52,9 @@ export class OffWorkComponent {
   }
 
   init() {
+    debugger
     if (this.data) {
+      debugger
       const now = new Date()
       const nowTime = now.getTime()
       const startDate = new Date(this.data['startDate'])
