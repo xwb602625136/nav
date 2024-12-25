@@ -50,6 +50,18 @@ const tagPath = path.join('.', 'data', 'tag.json')
 const searchPath = path.join('.', 'data', 'search.json')
 const componentPath = path.join('.', 'data', 'component.json')
 
+  // 获取今天的日期，但将时间和毫秒数重置为零
+const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  // 计算今天早上8:30的时间戳
+  const startOfDay = new Date(today);
+  startOfDay.setHours(8, 30, 0, 0);
+  
+  // 计算今天下午6:00的时间戳
+  const endOfDay = new Date(today);
+  endOfDay.setHours(18, 0, 0, 0);
+
 let internal = {}
 let db = []
 let settings = {}
@@ -98,17 +110,6 @@ try {
   }
   //
   idx = components.findIndex((item) => item.type === 2)
-  // 获取今天的日期，但将时间和毫秒数重置为零
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  
-  // 计算今天早上8:30的时间戳
-  const startOfDay = new Date(today);
-  startOfDay.setHours(8, 30, 0, 0);
-  
-  // 计算今天下午6:00的时间戳
-  const endOfDay = new Date(today);
-  endOfDay.setHours(18, 0, 0, 0);
   const offWork = {
     type: 2,
     id: -2,
@@ -160,12 +161,12 @@ try {
    const countdown2 = {
     type: 5,
     id: -5,
-    topColor: 'linear-gradient(90deg, #FAD961 0%, #F76B1C 100%)',
-    bgColor: 'rgb(235,129,124)',
-    url: 'https://gcore.jsdelivr.net/gh/xjh22222228/public@gh-pages/nav/component2.jpg',
+    topColor: 'rgb(79, 131, 198)',
+    bgColor: 'rgb(255,255,255)',
+    url: '',
     title: '距离休假过年还有',
-    dateColor: '#fff',
-    dayColor: '#fff',
+    dateColor: 'rgb(0,0,0)',
+    dayColor: 'rgb(0,0,0)',
     date: '2025-01-18',
   }
 
