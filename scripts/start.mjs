@@ -114,8 +114,8 @@ try {
     id: -2,
     workTitle: '距离下班还有',
     restTitle: '休息啦！',
-    startDate: startOfDay.getTime(),
-    date: endOfDay.getTime() ,
+    startDate: new Date(2024, 12, 25, 8, 30, 0).getTime(),
+    date: new Date(2024, 12, 25, 18, 0, 0).getTime(),
   }
   if (idx >= 0) {
     components[idx] = {
@@ -159,6 +159,7 @@ try {
 
   if (idx >= 0) {
     components[idx] = {
+      ...countdown,
       ...countdown,
       ...components[idx],
     }
