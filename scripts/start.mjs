@@ -50,17 +50,27 @@ const tagPath = path.join('.', 'data', 'tag.json')
 const searchPath = path.join('.', 'data', 'search.json')
 const componentPath = path.join('.', 'data', 'component.json')
 
-  // 获取今天的日期，但将时间和毫秒数重置为零
-const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  
-  // 计算今天早上8:30的时间戳
-  const startOfDay = new Date(today);
-  startOfDay.setHours(8, 30, 0, 0);
-  
-  // 计算今天下午6:00的时间戳
-  const endOfDay = new Date(today);
-  endOfDay.setHours(18, 0, 0, 0);
+// 获取今天的日期，但将时间和毫秒数重置为零，并考虑UTC+8时区
+function getTodayInCST() {
+  const now = new Date();
+  // 创建一个基于当前时间的Date对象，但将其视为UTC时间
+  const utcNow = new Date(now.toISOString());
+  // 添加8小时以转换为CST (UTC+8)
+  utcNow.setUTCHours(utcNow.getUTCHours() + 8);
+  // 将时间和毫秒数重置为零
+  utcNow.setUTCHours(0, 0, 0, 0);
+  return utcNow;
+}
+
+const today = getTodayInCST();
+
+// 计算今天早上8:30的时间戳
+const startOfDay = new Date(today);
+startOfDay.setUTCHours(8 - 8, 30, 0, 0); // 减去8是因为我们已经在CST了
+
+// 计算今天下午6:00的时间戳
+const endOfDay = new Date(today);
+endOfDay.setUTCHours(18 - 8, 0, 0, 0); // 减去8是因为我们已经在CST了
 
 let internal = {}
 let db = []
