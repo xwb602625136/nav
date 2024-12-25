@@ -98,13 +98,24 @@ try {
   }
   //
   idx = components.findIndex((item) => item.type === 2)
+  // 获取今天的日期，但将时间和毫秒数重置为零
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  // 计算今天早上8:30的时间戳
+  const startOfDay = new Date(today);
+  startOfDay.setHours(8, 30, 0, 0);
+  
+  // 计算今天下午6:00的时间戳
+  const endOfDay = new Date(today);
+  endOfDay.setHours(18, 0, 0, 0);
   const offWork = {
     type: 2,
     id: -2,
     workTitle: '距离下班还有',
     restTitle: '休息啦',
-    startDate: new Date(2018, 3, 26, 9, 0, 0).getTime(),
-    date: new Date(2018, 3, 26, 18, 0, 0).getTime(),
+    startDate: startOfDay.getTime(),
+    date: endOfDay.getTime() ,
   }
   if (idx >= 0) {
     components[idx] = {
@@ -145,9 +156,23 @@ try {
     dayColor: '#fff',
     date: '2025-01-29',
   }
+
+  const countdown2 = {
+    type: 5,
+    id: -5,
+    topColor: 'linear-gradient(90deg, #FAD961 0%, #F76B1C 100%)',
+    bgColor: 'rgb(235,129,124)',
+    url: '',
+    title: '距离休假过年还有',
+    dateColor: '#fff',
+    dayColor: '#fff',
+    date: '2025-01-18',
+  }
+  
   if (idx >= 0) {
     components[idx] = {
       ...countdown,
+      ...countdown2,
       ...components[idx],
     }
     components[idx].url = replaceJsdelivrCDN(components[idx].url, settings)
