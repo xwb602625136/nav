@@ -124,7 +124,7 @@ try {
     type: 2,
     id: -2,
     workTitle: '距离下班还有',
-    restTitle: '休息啦！',
+    restTitle: '下班啦！GO!',
     startDate: startOfDay.getTime(),
     date: endOfDay.getTime(),
   }
